@@ -1,0 +1,14 @@
+{
+	"_id" : 0,
+	"Name": "String",
+	"Classification": "String",
+	"Tags": ["Strings"],
+	"Instructions": "String",
+	"Ingredients": [{
+		"Name": "String",
+		"Amount": 0,
+		"AmountType": "String"
+	}],
+	// CookTime: 0?
+	// Serves: 0?
+}
