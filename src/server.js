@@ -2,6 +2,10 @@
 import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
+import config from '../config.js';
+import mongoose from 'mongoose';
+
+import api from './api/api.js';
 
 const app = express();
 
@@ -25,15 +29,24 @@ function start() {
 	    next();
 	});
 
+	app.use('/api/v1', api.router);
+
 	app.get('/', (req, res) => {
 	    res.render('index');
 	});
 
+	mongoose.connect((process.env.MONGOSTRING || config.mongoString), err => {
+		if (err) {
+			console.log('Mongo Connection Error', err);
+		} else {
+			console.log('Mongo Connection Successful');
+		}
+	});
+
 	app.listen(app.get('port'), () => {
-	    console.log('Server running on localhost:' + app.get('port') + '/');
+	    console.log('Server running on localhost:' + app.get('port'));
 	});
 
 }
-
 
 exports.start = start;
