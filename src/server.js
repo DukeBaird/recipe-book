@@ -4,7 +4,6 @@ import path from 'path';
 import bodyParser from 'body-parser';
 import config from '../config.js';
 import mongoose from 'mongoose';
-
 import api from './api/api.js';
 
 const app = express();

@@ -2,14 +2,14 @@
 import mongoose from 'mongoose';
 const recipeSchema = mongoose.Schema({
 	_id: String,
-	Name: String,
-	Classification: String,
-	Tags: [String],
-	Instructions: String,
-	Ingredients: {
-		Name: String,
-		Amount: Number,
-		AmountType: String
-	}
+	name: String,
+	classification: String,
+	tags: [String],
+	instructions: String,
+	ingredients: [{
+		name: String,
+		amount: Number,
+		amountType: String
+	}]
 });
 module.exports = mongoose.model('Recipes', recipeSchema, 'Recipes');
