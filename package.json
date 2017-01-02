@@ -14,7 +14,8 @@
   "license": "BSD-2-Clause",
   "scripts": {
     "build": "babel src -d build",
-    "start": "node build/main.js"
+    "start": "node build/main.js",
+    "test": "grunt"
   },
   "dependencies": {
     "babel-cli": "^6.18.0",

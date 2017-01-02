@@ -12,4 +12,4 @@ const recipeSchema = mongoose.Schema({
 		amountType: String
 	}]
 });
-module.exports = mongoose.model('Recipes', recipeSchema, 'Recipes');
+module.exports = mongoose.model('Recipe', recipeSchema, 'Recipe');
