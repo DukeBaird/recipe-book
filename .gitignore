@@ -1,4 +1,5 @@
 config.js
-lib
+build
 node_modules
 *.log
+*.xml
