@@ -1,5 +1,5 @@
-
 import mongoose from 'mongoose';
+
 const recipeSchema = mongoose.Schema({
 	_id: String,
 	name: String,
@@ -12,4 +12,5 @@ const recipeSchema = mongoose.Schema({
 		amountType: String
 	}]
 });
+
 module.exports = mongoose.model('Recipe', recipeSchema, 'Recipe');
