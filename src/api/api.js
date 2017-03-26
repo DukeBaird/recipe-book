@@ -11,5 +11,4 @@ function test(req, res, next) {
 	});
 }
 router.get('/test', test);
-
 exports.router = router;

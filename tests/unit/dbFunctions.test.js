@@ -116,6 +116,38 @@ describe('Database Functions', function() {
 			});
 		});
 
+		it('Should return recipes that match the given tags', function(done) {
+			recipeFunctions.getRecipesByTags(['test']).then(function(result) {
+				expect(result.length).to.equal(1);
+				done();
+			});
+		});
+
+		it('Should return recipes when a given tag matches', function(done) {
+			recipeFunctions.getRecipesByTags(['test', 'NotATag', 'AlsoNotATag']).then(function(result) {
+				expect(result.length).to.equal(1);
+				done();
+			});
+		});
+
+		it('Should return an empty array when no tags match', function(done) {
+			recipeFunctions.getRecipesByTags(['NotATag']).then(function(result) {
+				expect(result.length).to.equal(0);
+				done();
+			});
+		});
+
+		it('Should update a recipe with given information', function(done) {
+			var newName = 'Updated Name';
+
+			recipeFunctions.updateRecipe(testData.recipeData._id, {
+				name: newName
+			}).then(function(result) {
+				expect(result.name).to.equal(newName);
+				done();
+			});
+		});
+
 	});
 
 });
