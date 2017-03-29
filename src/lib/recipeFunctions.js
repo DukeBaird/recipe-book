@@ -75,4 +75,6 @@ exports.updateRecipe = (id, recipe) => {
  * input: A recipe ids
  * output: Returns a promise object, resolving a boolean value of the result
  */
-exports.deleteRecipe = id => {};
+exports.deleteRecipe = id => {
+	return Recipe.findByIdAndRemove(id);
+};

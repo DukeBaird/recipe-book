@@ -5,6 +5,7 @@ import bodyParser from 'body-parser';
 import config from '../config.js';
 import mongoose from 'mongoose';
 import api from './api/api.js';
+import routes from './routes.js';
 
 const app = express();
 
@@ -20,19 +21,14 @@ function start() {
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({ extended: false }));
 
-	app.use(express.static(path.join(__dirname, 'public')));
-
 	app.use((req, res, next) => {
 	    res.setHeader('Access-Control-Allow-Origin', '*');
 	    res.setHeader('Cache-Control', 'no-cache');
 	    next();
 	});
 
+	app.use('/', routes);
 	app.use('/api/v1', api.router);
-
-	app.get('/', (req, res) => {
-	    res.render('index');
-	});
 
 	mongoose.connect((process.env.MONGOSTRING || config.mongoString), err => {
 		if (err) {

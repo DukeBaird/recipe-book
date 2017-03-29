@@ -148,6 +148,15 @@ describe('Database Functions', function() {
 			});
 		});
 
+		it('Should be able to delete recipes', function(done) {
+			recipeFunctions.deleteRecipe(testData.recipeData._id).then(function(result) {
+				Recipe.find().then(function(recipes) {
+					expect(recipes.length).to.equal(0);
+					done();
+				});
+			});
+		});
+
 	});
 
 });
