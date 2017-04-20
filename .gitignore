@@ -3,3 +3,6 @@ build
 node_modules
 *.log
 *.xml
+.sass-cache
+public.css.map
+*.css

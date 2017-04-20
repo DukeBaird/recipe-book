@@ -16,7 +16,7 @@ function start() {
 	app.use(bodyParser.json());
 
 	app.set('views', __dirname + '/../views');
-	app.set('view engine', 'pug');
+	app.set('view engine', 'html');
 
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({ extended: false }));

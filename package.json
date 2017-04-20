@@ -15,6 +15,7 @@
   "scripts": {
     "build": "babel src -d build",
     "start": "node build/main.js",
+    "sass": "sass ./public/css/style.sass ./public/css/public.css",
     "test": "grunt"
   },
   "dependencies": {
@@ -25,8 +26,7 @@
     "bluebird": "^3.5.0",
     "body-parser": "^1.15.2",
     "express": "^4.14.0",
-    "mongoose": "^4.7.5",
-    "pug": "^2.0.0-beta6"
+    "mongoose": "^4.7.5"
   },
   "devDependencies": {
     "babel-eslint": "^7.1.1",
