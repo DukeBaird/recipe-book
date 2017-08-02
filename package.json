@@ -15,7 +15,7 @@
   "scripts": {
     "build": "babel src -d build",
     "start": "node build/main.js",
-    "sass": "sass ./public/css/style.sass ./public/css/public.css",
+    "sass": "sass ./public/css/style.sass ./public/css/style.css",
     "test": "grunt"
   },
   "dependencies": {

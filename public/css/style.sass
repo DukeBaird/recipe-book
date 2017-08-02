@@ -1,4 +1,33 @@
+$sideBar: lime
+$content: cyan
 
+.sideBar 
+	position: fixed
+	top: 0
+	left: 0
+	bottom: 0
+	width: 300px
+	background-color: $sideBar
 
-.main 
-	background-color: lime
+.menuContainer
+	position: absolute
+	top: 200px
+	left: 0
+	width: 100%
+
+.menuItem
+	position: relative
+	height: 40px
+	width: 100%
+	background-color: purple
+	border-top: solid 1px black
+	border-bottom: solid 1px black
+	cursor: pointer
+
+.contentArea
+	position: fixed
+	top: 0
+	bottom: 0
+	left: 300px
+	right: 0
+	background-color: $content

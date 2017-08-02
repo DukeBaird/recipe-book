@@ -1,8 +1,3 @@
-// import React from '../react/react';
-// import ReactDOM from '../react.react-dom'
-
-// import SideBar from '../components/SideBar'
-
 class MenuItem extends React.Component {
 	render() {
 		return (
@@ -46,19 +41,4 @@ class SideBar extends React.Component {
 	}
 }
 
-
-class Content extends React.Component {
-	render() {
-		return (
-			<div className='contentArea'></div>
-		)
-	}
-}
-
-ReactDOM.render(
-	<div>
-		<SideBar />
-		<Content />
-	</div>,
-	document.getElementById('root')
-);
+export default const SideBar
