@@ -1,3 +1,6 @@
+import React    from 'react';
+import ReactDOM from 'react-dom'
+
 class MenuItem extends React.Component {
 	render() {
 		return (
@@ -41,4 +44,4 @@ class SideBar extends React.Component {
 	}
 }
 
-export default const SideBar
+export default SideBar
