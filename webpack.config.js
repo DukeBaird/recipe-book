@@ -1,12 +1,21 @@
 const path = require('path');
 const webpack = require('webpack');
+// const HTMLWebpackPlugin = require('html-webpack-plugin');
 
 module.exports = {
 	entry: './public/js/pages/index.jsx',
 	output: {
-		filename: 'bundle.js',
+		filename: '[name].bundle.js',
 		path: path.resolve(__dirname, './public/dist')
 	},
+	// plugins: [
+	// 	new HTMLWebpackPlugin({
+	// 		title: 'Code Splitting'
+	// 	}),
+	// 	new webpack.optimize.CommonsChunkPlugin({
+	// 		name: 'common'
+	// 	})
+	// ],
 	module: {
 		loaders: [
 			{
