@@ -1,36 +1,24 @@
 import React    from 'react';
-import ReactDOM from 'react-dom'
+import ReactDOM from 'react-dom';
+import { Link } from 'react-router-dom';
 
-class MenuItem extends React.Component {
-	render() {
-		return (
-			<div className='menuItem' onClick={() => this.props.onClick()}>{this.props.item}</div>
-		)
-	}
-}
+// class MenuItem extends React.Component {
+// 	render() {
+// 		return (
+// 		)
+// 	}
+// }
 
 class Menu extends React.Component {
-
-	renderMenuItem(phrase) {
-		return (
-			<MenuItem 
-				item={phrase}
-				onClick={() => this.handleClick(phrase)}
-			/>
-		)
-	}
 
 	render() {
 		return (
 			<div className='menuContainer'>
-				{this.renderMenuItem('submit')}
-				{this.renderMenuItem('search')}
+				<Link className='menuItem' to='/home'>Home</Link>
+				<Link className='menuItem' to='/submit'>Submit</Link>
+				<Link className='menuItem' to='/search'>Search</Link>
 			</div>
 		)
-	}
-
-	handleClick(page) {
-		console.log("GOTO: " + page);
 	}
 }
 

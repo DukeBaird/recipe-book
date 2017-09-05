@@ -6,3 +6,6 @@ node_modules
 .sass-cache
 public.css.map
 *.css
+public/css/style\.css\.map
+
+public/dist/
