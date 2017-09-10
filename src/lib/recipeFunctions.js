@@ -2,7 +2,6 @@
 import mongoose from 'mongoose';
 import Recipe from '../models/recipe.js';
 
-
 /*
  * newRecipe
  * Adds a new recipe to the database
@@ -77,4 +76,18 @@ exports.updateRecipe = (id, recipe) => {
  */
 exports.deleteRecipe = id => {
 	return Recipe.findByIdAndRemove(id);
+};
+
+/*
+ * randomRecipe
+ * Pulls a random recipe from the db
+ * input: Nothing
+ * output: Returns a random recipe
+*/
+
+// TODO: Unit test this
+exports.randomRecipe = () => {
+	return Recipe.aggregate({
+		$sample: { size: 1}
+	});
 };

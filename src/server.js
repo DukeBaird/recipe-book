@@ -2,6 +2,7 @@
 import express from 'express';
 import path from 'path';
 import bodyParser from 'body-parser';
+import logger from 'morgan';
 import config from '../config.js';
 import mongoose from 'mongoose';
 import api from './api/api.js';
@@ -18,6 +19,7 @@ function start() {
 	app.set('views', __dirname + '/../views');
 	app.set('view engine', 'pug');
 
+	app.use(logger('common'));
 	app.use(bodyParser.json());
 	app.use(bodyParser.urlencoded({ extended: false }));
 
@@ -27,8 +29,8 @@ function start() {
 	    next();
 	});
 
-	app.use('/', routes);
 	app.use('/api/v1', api.router);
+	app.use('/', routes);
 
 	mongoose.connect((process.env.MONGOSTRING || config.mongoString), err => {
 		if (err) {
