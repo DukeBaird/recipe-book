@@ -4,7 +4,11 @@ const router = express.Router();
 
 function test(req, res, next) {
 	res.status(200).json({
-		data: {},
+		data: {
+			image: 'http://lorempizza.com/200/200',
+			title: 'Dummy Recipe',
+			Author: "Duck Bird"
+		},
 		err: null
 	});
 }
