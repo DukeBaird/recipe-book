@@ -5,7 +5,6 @@ import Home from '../components/Home.jsx';
 import NotFound from '../components/404.jsx';
 import Search from '../components/Search.jsx';
 import Submit from '../components/Submit.jsx';
-
 import {connect} from 'react-redux';
 import {bindActionCreators} from 'redux';
 
@@ -22,9 +21,9 @@ class Content extends React.Component {
 			<div className='contentArea'>
 				<Switch>
 					<Route exact path='/' render={(props) => ( <Home recipe={ this.props.recipe[0] } /> )}/>
-					<Route exact path='/search' component={Search}/>
-					<Route exact path='/Submit' component={Submit}/>
-					<Route exact path='/404' component={NotFound}/>
+					<Route exact path='/search' render={(props) => ( <Search/> )}/>
+					<Route exact path='/Submit' render={(props) => ( <Submit/> )}/>
+					<Route exact path='/404' render={(props) => ( <NotFound /> )}/>
 				</Switch>
 			</div>
 		)

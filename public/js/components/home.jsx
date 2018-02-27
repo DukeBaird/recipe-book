@@ -16,7 +16,7 @@ class Home extends React.Component {
 		}
 	}
 
-	render () {
+	render() {
 		if (!this.state.hasRecipe) {
 			return (
 				<div className='container'>
