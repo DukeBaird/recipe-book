@@ -4,7 +4,7 @@ import recipeApi from '../api/recipeApi';
 export function loadRecipeSuccess(recipe) {
 	return {
 		type: types.LOAD_RECIPE_SUCCESS,
-		recipe: recipe
+		recipes: recipe.data
 	}
 }
 

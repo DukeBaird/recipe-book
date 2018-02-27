@@ -3,14 +3,12 @@ import ReactDOM from 'react-dom';
 
 class Home extends React.Component {
 
-	constructor(props) {
-		super(props);
-		this.state = {
-			data: []
-		};
+	constructor(props, context) {
+		super(props, context);
 	}
 
 	render () {
+		console.log(this.props.recipe);
 		return (
 			<div className='container'>
 				<div className='title'>Recipe Book</div>
@@ -20,4 +18,4 @@ class Home extends React.Component {
 	}
 }
 
-export default Home
+export default Home;
