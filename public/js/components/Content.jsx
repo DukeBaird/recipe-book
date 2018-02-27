@@ -22,7 +22,6 @@ class Content extends React.Component {
 			<div className='contentArea'>
 				<Switch>
 					<Route exact path='/' render={(props) => ( <Home recipe={ this.props.recipe[0] } /> )}/>
-					// <Route exact path='/' component={Home}/>
 					<Route exact path='/search' component={Search}/>
 					<Route exact path='/Submit' component={Submit}/>
 					<Route exact path='/404' component={NotFound}/>

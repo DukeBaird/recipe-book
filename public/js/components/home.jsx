@@ -5,14 +5,30 @@ class Home extends React.Component {
 
 	constructor(props, context) {
 		super(props, context);
+		this.state = {
+			hasRecipe: false
+		}
+	}
+
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.recipe) {
+			this.setState({ hasRecipe: true });
+		}
 	}
 
 	render () {
-		console.log(this.props.recipe);
+		if (!this.state.hasRecipe) {
+			return (
+				<div className='container'>
+					<div className='title'>Recipe Book</div>
+				</div>
+			)
+		}
+
 		return (
 			<div className='container'>
 				<div className='title'>Recipe Book</div>
-				<p>This is the home page!</p>
+				<p>{ this.props.recipe.title }</p>
 			</div>
 		)
 	}
