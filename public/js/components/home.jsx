@@ -6,12 +6,12 @@ class Home extends React.Component {
 	constructor(props, context) {
 		super(props, context);
 		this.state = {
-			hasRecipe: false
+			hasRecipe: !!props.recipe
 		}
 	}
 
 	componentWillReceiveProps(nextProps) {
-		if (nextProps.recipe) {
+		if (this.props.recipe || nextProps.recipe) {
 			this.setState({ hasRecipe: true });
 		}
 	}

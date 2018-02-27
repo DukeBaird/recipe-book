@@ -1,5 +1,5 @@
 import React, {PropTypes} from 'react';
-import { Switch, Route } from 'react-router-dom';
+import { Switch, Route, withRouter } from 'react-router-dom';
 
 import Home from '../components/Home.jsx';
 import NotFound from '../components/404.jsx';
@@ -40,4 +40,4 @@ function mapStateToProps(state, ownProps) {
 	}
 }
 
-export default connect(mapStateToProps)(Content)
+export default withRouter(connect(mapStateToProps)(Content));
