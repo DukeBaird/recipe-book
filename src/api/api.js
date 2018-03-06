@@ -5,9 +5,8 @@ const router = express.Router();
 function test(req, res, next) {
 	res.status(200).json({
 		data: [{
-			image: 'http://lorempizza.com/200/200',
-			title: 'Dummy Recipe',
-			Author: "Duck Bird"
+			name: 'Dummy Recipe',
+			classification: "Duck Bird"
 		}],
 		err: null
 	});

@@ -8,6 +8,13 @@ export function loadRecipeSuccess(recipe) {
 	}
 }
 
+export function createRecipeSucces(recipe) {
+	return {
+		type: types.CREATE_RECIPE_SUCCESS,
+		recipes: recipe.data
+	}
+}
+
 export function loadRecipe() {
 	return function(dispatch) {
 		return recipeApi.getRecipe().then(recipe => {
@@ -15,5 +22,15 @@ export function loadRecipe() {
 		}).catch(error => {
 			throw (error);
 		});
+	}
+}
+
+export function createRecipe(recipe) {
+	return function(disptch) {
+		return recipeApi.createRecipe(recipe).then((recipe) => {
+			dispatch(createRecipeSucces(recipe));
+		}).catch(error => {
+			throw (error);
+		})
 	}
 }

@@ -28,7 +28,9 @@ class Home extends React.Component {
 		return (
 			<div className='container'>
 				<div className='title'>Recipe Book</div>
-				<p>{ this.props.recipe.title }</p>
+				<p>{ this.props.recipe.name }</p>
+				<p>{ this.props.recipe.classification }</p>
+				<p>{ this.props.recipe.instructions }</p>
 			</div>
 		)
 	}
