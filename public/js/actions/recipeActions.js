@@ -31,6 +31,6 @@ export function createRecipe(recipe) {
 			dispatch(createRecipeSucces(recipe));
 		}).catch(error => {
 			throw (error);
-		})
+		});
 	}
 }

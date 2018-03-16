@@ -1,22 +1,54 @@
 import React    from 'react';
 import ReactDOM from 'react-dom';
+import {connect} from 'react-redux';
 import RecipeInput from './RecipeInput.jsx'
 
 class Submit extends React.Component {
 
 	constructor(props) {
 		super(props);
-		// do I want to do anything here?
+		this.state = {
+			recipe: {
+				name: '',
+				instructions: ''
+			}
+		};
+		this.saveRecipe = this.saveRecipe.bind(this);
+		this.updateRecipeState = this.updateRecipeState.bind(this);
+	}
+
+	updateRecipeState(event) {
+		console.log(event.target);
+		const field = event.target.name;
+		const recipe = this.state.recipe;
+		recipe[field] = event.target.value;
+		return this.setState({recipe: recipe});
+	}
+
+	saveRecipe(event) {
+		event.preventDefault();
+		console.log(this.state);
 	}
 
 	render() {
 		return (
 			<div className='container'>
-				<div className='title'>Recipe Submission</div>
-				<RecipeInput />
+				<div className='title' >Recipe Submission</div>
+				<RecipeInput 
+					onSubmit={ this.saveRecipe }
+					onChange={ this.updateRecipeState }
+				/>
 			</div>
 		)
 	}
 }
 
-export default Submit
+function mapStateToProps(state, ownProps) {
+	return {};
+}
+
+function mapDispatchToProps(dispatch) {
+	return {};
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Submit);
