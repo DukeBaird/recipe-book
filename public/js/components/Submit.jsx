@@ -1,6 +1,8 @@
 import React    from 'react';
 import ReactDOM from 'react-dom';
 import {connect} from 'react-redux';
+import { bindActionCreators } from 'redux';
+import * as recipeActions from '../actions/recipeActions.js';
 import RecipeInput from './RecipeInput.jsx'
 
 class Submit extends React.Component {
@@ -18,7 +20,6 @@ class Submit extends React.Component {
 	}
 
 	updateRecipeState(event) {
-		console.log(event.target);
 		const field = event.target.name;
 		const recipe = this.state.recipe;
 		recipe[field] = event.target.value;
@@ -27,7 +28,7 @@ class Submit extends React.Component {
 
 	saveRecipe(event) {
 		event.preventDefault();
-		console.log(this.state);
+		this.props.actions.createRecipe(this.state.recipe);
 	}
 
 	render() {
@@ -48,7 +49,9 @@ function mapStateToProps(state, ownProps) {
 }
 
 function mapDispatchToProps(dispatch) {
-	return {};
+	return {
+		actions: bindActionCreators(recipeActions, dispatch)
+	};
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Submit);

@@ -26,7 +26,7 @@ export function loadRecipe() {
 }
 
 export function createRecipe(recipe) {
-	return function(disptch) {
+	return function(dispatch) {
 		return recipeApi.createRecipe(recipe).then((recipe) => {
 			dispatch(createRecipeSucces(recipe));
 		}).catch(error => {
