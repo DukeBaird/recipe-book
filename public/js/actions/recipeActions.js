@@ -11,6 +11,13 @@ export function loadRecipeSuccess(recipe) {
 export function createRecipeSucces(recipe) {
 	return {
 		type: types.CREATE_RECIPE_SUCCESS,
+		recipe: recipe.data
+	}
+}
+
+export function findRecipeSuccess(recipe) {
+	return {
+		type: types.FIND_RECIPE_SUCCESS,
 		recipes: recipe.data
 	}
 }
@@ -29,6 +36,16 @@ export function createRecipe(recipe) {
 	return function(dispatch) {
 		return recipeApi.createRecipe(recipe).then((recipe) => {
 			dispatch(createRecipeSucces(recipe));
+		}).catch(error => {
+			throw (error);
+		});
+	}
+}
+
+export function findRecipe(recipe) {
+	return function(dispatch) {
+		return recipeApi.findRecipe(recipe).then((recipe) => {
+			dispatch(findRecipeSuccess(recipe));
 		}).catch(error => {
 			throw (error);
 		});

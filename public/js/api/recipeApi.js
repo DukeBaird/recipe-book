@@ -20,6 +20,16 @@ class RecipeApi {
 			return error;
 		});
 	}
+
+	static findRecipe(recipe) {
+		return fetch('/api/v1/randomRecipe').then(response => {
+			return {
+				data: []
+			}
+		}).catch(error => {
+			return error;
+		});
+	}
 }
 
 export default RecipeApi;
