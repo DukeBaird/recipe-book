@@ -10,7 +10,10 @@ class RecipeApi {
 	static createRecipe(recipe) {
 		return fetch('/api/v1/recipe', {
 			body: JSON.stringify(recipe),
-			method: 'POST'
+			method: 'POST',
+			headers: {
+				'content-type': 'application/json'
+			}
 		}).then(response => {
 			return response.json();
 		}).catch(error => {

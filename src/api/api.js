@@ -18,7 +18,6 @@ router.get('/test', test);
 // TODO: Test these
 function getRandom(req, res, next) {
 	recipeFunctions.randomRecipe().then((data, err) => {
-		console.log(data, err);
 		if (err) {
 			res.status(500).json({
 				data: null,
@@ -54,12 +53,13 @@ function getRecipe(req, res, next) {
 router.get('/recipe/:recipeID', getRecipe);
 
 function createRecipe(req, res, next) {
+
 	const recipe = {
 		name: req.body.name,
 		classification: req.body.classification,
 		tags: req.body.tags,
-		instrs: req.body.instructions,
-		ingrds: req.body.ingredients
+		instructions: req.body.instructions,
+		ingredients: req.body.ingredients
 	};
 
 	recipeFunctions.newRecipe(recipe).then((data, err) => {
