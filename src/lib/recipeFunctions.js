@@ -27,6 +27,7 @@ exports.newRecipe = recipe => {
  * output: Returns a promise object, resolving with the recipe, if exists
  * and null if it does not
  */
+ // TODO: Should this only return one?
 exports.getRecipeByName = name => {
 	return Recipe.findOne({
 		name: name

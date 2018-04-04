@@ -36,7 +36,7 @@ Content.propTypes = {
 
 function mapStateToProps(state, ownProps) {
 	return {
-		recipe: state.recipes
+		recipe: state.recipes.list
 	}
 }
 

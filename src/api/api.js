@@ -13,8 +13,6 @@ function test(req, res, next) {
 }
 router.get('/test', test);
 
-
-// TODO: What does (data, err) actually hold??
 // TODO: Test these
 function getRandom(req, res, next) {
 	recipeFunctions.randomRecipe().then((data, err) => {
@@ -78,5 +76,40 @@ function createRecipe(req, res, next) {
 }
 router.post('/recipe', createRecipe);
 
+function findRecipe(req, res, next) {
+	const searchText = req.query.searchText || "";
+
+	const promises = [
+		recipeFunctions.getRecipeByName(searchText),
+		recipeFunctions.getRecipesByClassification(searchText),
+		recipeFunctions.getRecipesByTags(searchText.split(" "))
+	];
+
+	Promise.all(promises).then(result => {
+		const results = [result[0], ...result[1], ...result[2]];
+		let unique = [...new Set(results)];
+		const unique_obj = {};
+
+		for (let i = 0; i < unique.length; i++) {
+			unique_obj[unique[i]["_id"]] = unique[i];
+		}
+
+		unique = [];
+		for (let key in unique_obj) {
+			unique.push(unique_obj[key]);
+		}
+
+		res.status(200).json({
+			data: unique,
+			err: null
+		});
+	}).catch(err => {
+		res.status(500).json({
+			data: null,
+			err: err
+		});
+	});
+}
+router.get('/search/recipe', findRecipe);
 
 exports.router = router;

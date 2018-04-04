@@ -9,6 +9,7 @@ class Submit extends React.Component {
 
 	constructor(props) {
 		super(props);
+		console.log("constructor", props);
 		this.state = {
 			recipe: {
 				name: '',
@@ -17,6 +18,10 @@ class Submit extends React.Component {
 		};
 		this.saveRecipe = this.saveRecipe.bind(this);
 		this.updateRecipeState = this.updateRecipeState.bind(this);
+	}
+
+	componentWillReceiveProps(nextProps) {
+		console.log("next props", nextProps);
 	}
 
 	updateRecipeState(event) {
@@ -32,6 +37,15 @@ class Submit extends React.Component {
 	}
 
 	render() {
+
+		if (this.props.created) {
+			return (
+				<div className='container'>
+					<div className='title'>Recipe Created!</div>	
+				</div>
+			)
+		}
+
 		return (
 			<div className='container'>
 				<div className='title' >Recipe Submission</div>
@@ -45,7 +59,10 @@ class Submit extends React.Component {
 }
 
 function mapStateToProps(state, ownProps) {
-	return {};
+	console.log("map state", state);
+	return {
+		created: state.recipes.created
+	};
 }
 
 function mapDispatchToProps(dispatch) {

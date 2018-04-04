@@ -21,11 +21,9 @@ class RecipeApi {
 		});
 	}
 
-	static findRecipe(recipe) {
-		return fetch('/api/v1/randomRecipe').then(response => {
-			return {
-				data: []
-			}
+	static findRecipe(searchText) {
+		return fetch('/api/v1/search/recipe?searchText=' + searchText).then(response => {
+			return response.json();
 		}).catch(error => {
 			return error;
 		});
