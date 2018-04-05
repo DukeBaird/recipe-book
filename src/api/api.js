@@ -30,27 +30,28 @@ async function getRandom(req, res, next) {
 }
 router.get('/randomRecipe', getRandom);
 
-function getRecipe(req, res, next) {
+async function getRecipe(req, res, next) {
 	const recipeID = req.params.recipeID;
-	recipeFunctions.getRecipe(recipeID).then((data, err) => {
-		if (err) {
-			res.status(500).json({
-				data: null,
-				err: err
-			});
-		} else {
-			res.status(200).json({
-				data: data,
-				err: null
-			});
-		}
-	});
 
+	try {
+		const result = await recipeFunctions.getRecipe(recipeID);
+
+		res.status(200).json({
+			data: result,
+			err: null
+		});
+	} catch (err) {
+		res.status(500).json({
+			data: null,
+			err: err
+		});
+	}
 }
 router.get('/recipe/:recipeID', getRecipe);
 
 async function createRecipe(req, res, next) {
 
+	// Why not just const recipe = req.body ?
 	const recipe = {
 		name: req.body.name,
 		classification: req.body.classification,
