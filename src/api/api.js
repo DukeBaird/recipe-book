@@ -14,20 +14,19 @@ function test(req, res, next) {
 router.get('/test', test);
 
 // TODO: Test these
-function getRandom(req, res, next) {
-	recipeFunctions.randomRecipe().then((data, err) => {
-		if (err) {
-			res.status(500).json({
-				data: null,
-				err: err
-			});
-		} else {
-			res.status(200).json({
-				data: data,
-				err: null
-			});
-		}
-	});
+async function getRandom(req, res, next) {
+	try {
+		const result = await recipeFunctions.randomRecipe();
+		res.status(200).json({
+			data: result,
+			err: null
+		});
+	} catch (err) {
+		res.status(500).json({
+			data: null,
+			err: err
+		});
+	};
 }
 router.get('/randomRecipe', getRandom);
 
@@ -50,7 +49,7 @@ function getRecipe(req, res, next) {
 }
 router.get('/recipe/:recipeID', getRecipe);
 
-function createRecipe(req, res, next) {
+async function createRecipe(req, res, next) {
 
 	const recipe = {
 		name: req.body.name,
@@ -60,55 +59,56 @@ function createRecipe(req, res, next) {
 		ingredients: req.body.ingredients
 	};
 
-	recipeFunctions.newRecipe(recipe).then((data, err) => {
-		if (err) {
-			res.status(500).json({
-				data: null,
-				err: err
-			});
-		} else {
-			res.status(200).json({
-				data: data,
-				err: null
-			});
-		}
-	});
-}
-router.post('/recipe', createRecipe);
-
-function findRecipe(req, res, next) {
-	const searchText = req.query.searchText || "";
-
-	const promises = [
-		recipeFunctions.getRecipeByName(searchText),
-		recipeFunctions.getRecipesByClassification(searchText),
-		recipeFunctions.getRecipesByTags(searchText.split(" "))
-	];
-
-	Promise.all(promises).then(result => {
-		const results = [result[0], ...result[1], ...result[2]];
-		let unique = [...new Set(results)];
-		const unique_obj = {};
-
-		for (let i = 0; i < unique.length; i++) {
-			unique_obj[unique[i]["_id"]] = unique[i];
-		}
-
-		unique = [];
-		for (let key in unique_obj) {
-			unique.push(unique_obj[key]);
-		}
+	try {
+		const result = await recipeFunctions.newRecipe(recipe);
 
 		res.status(200).json({
-			data: unique,
+			data: result,
 			err: null
 		});
-	}).catch(err => {
+			
+	} catch (err) {
 		res.status(500).json({
 			data: null,
 			err: err
 		});
-	});
+	};
+}
+router.post('/recipe', createRecipe);
+
+async function findRecipe(req, res, next) {
+	const searchText = req.query.searchText || "";
+
+	try {
+		const result = await Promise.all([
+			recipeFunctions.getRecipeByName(searchText),
+			recipeFunctions.getRecipesByClassification(searchText),
+			recipeFunctions.getRecipesByTags(searchText.split(" "))
+		]);
+
+		let results = [result[0], ...result[1], ...result[2]];
+		const unique_obj = {};
+
+		for (let i = 0; i < results.length; i++) {
+			unique_obj[results[i]["_id"]] = results[i];
+		}
+
+		results = [];
+		for (let key in unique_obj) {
+			results.push(unique_obj[key]);
+		}
+
+		res.status(200).json({
+			data: results,
+			err: null
+		});
+	
+	} catch (err) {
+		res.status(500).json({
+			data: null,
+			err: err
+		});
+	}
 }
 router.get('/search/recipe', findRecipe);
 
