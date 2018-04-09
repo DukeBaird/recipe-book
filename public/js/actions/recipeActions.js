@@ -8,7 +8,7 @@ export function loadRecipeSuccess(recipe) {
 	}
 }
 
-export function createRecipeSucces(recipe) {
+export function createRecipeSuccess(recipe) {
 	return {
 		type: types.CREATE_RECIPE_SUCCESS,
 		recipe: recipe.data
@@ -19,6 +19,12 @@ export function findRecipeSuccess(recipe) {
 	return {
 		type: types.FIND_RECIPE_SUCCESS,
 		recipes: recipe.data
+	}
+}
+
+export function resetRecipeSuccess() {
+	return {
+		type: types.RESET_RECIPE_SUCCESS
 	}
 }
 
@@ -35,7 +41,7 @@ export function loadRecipe() {
 export function createRecipe(recipe) {
 	return function(dispatch) {
 		return recipeApi.createRecipe(recipe).then((recipe) => {
-			dispatch(createRecipeSucces(recipe));
+			dispatch(createRecipeSuccess(recipe));
 		}).catch(error => {
 			throw (error);
 		});
@@ -49,5 +55,11 @@ export function findRecipe(recipe) {
 		}).catch(error => {
 			throw (error);
 		});
+	}
+}
+
+export function resetRecipe() {
+	return function(dispatch) {
+		dispatch(resetRecipeSuccess());
 	}
 }

@@ -9,7 +9,6 @@ class Submit extends React.Component {
 
 	constructor(props) {
 		super(props);
-		console.log("constructor", props);
 		this.state = {
 			recipe: {
 				name: '',
@@ -20,8 +19,8 @@ class Submit extends React.Component {
 		this.updateRecipeState = this.updateRecipeState.bind(this);
 	}
 
-	componentWillReceiveProps(nextProps) {
-		console.log("next props", nextProps);
+	componentWillUnmount() {
+		this.props.actions.resetRecipe();
 	}
 
 	updateRecipeState(event) {
@@ -59,7 +58,6 @@ class Submit extends React.Component {
 }
 
 function mapStateToProps(state, ownProps) {
-	console.log("map state", state);
 	return {
 		created: state.recipes.created
 	};
