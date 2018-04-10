@@ -7,6 +7,8 @@ import { loadRecipe } from '../actions/recipeActions';
 import SideBar from '../components/SideBar.jsx';
 import Content from '../components/Content.jsx';
 
+import './../../css/style.sass';
+
 const store = configureStore();
 store.dispatch(loadRecipe());
 

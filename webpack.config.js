@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-// const HTMLWebpackPlugin = require('html-webpack-plugin');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
 	entry: './public/js/pages/index.jsx',
@@ -8,14 +8,6 @@ module.exports = {
 		filename: '[name].bundle.js',
 		path: path.resolve(__dirname, './public/dist')
 	},
-	// plugins: [
-	// 	new HTMLWebpackPlugin({
-	// 		title: 'Code Splitting'
-	// 	}),
-	// 	new webpack.optimize.CommonsChunkPlugin({
-	// 		name: 'common'
-	// 	})
-	// ],
 	module: {
 		loaders: [
 			{
@@ -25,7 +17,16 @@ module.exports = {
 	            query: {
 	                presets: ['es2015', 'react']
 	            }
+	        }, {
+	        	test: /\.(s)?[ac]ss$/,
+	        	use: ExtractTextPlugin.extract({
+	        		fallback: 'style-loader',
+	        		use: ['css-loader', 'sass-loader']
+	        	})
 	        }
-		]
-	}
+		],
+	},
+	plugins: [
+		new ExtractTextPlugin({ filename: 'main.bundle.css' })
+	]
 };
