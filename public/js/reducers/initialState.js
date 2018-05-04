@@ -1,4 +1,5 @@
 export default {
 	list: [],
-	created: false
+	created: false,
+	found: false
 }

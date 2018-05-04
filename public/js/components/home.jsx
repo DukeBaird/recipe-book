@@ -1,5 +1,6 @@
 import React    from 'react';
 import ReactDOM from 'react-dom';
+import RecipeDisplay from './RecipeDisplay.jsx';
 
 class Home extends React.Component {
 
@@ -28,9 +29,7 @@ class Home extends React.Component {
 		return (
 			<div className='container'>
 				<div className='title'>Recipe Book</div>
-				<p>{ this.props.recipe.name }</p>
-				<p>{ this.props.recipe.classification }</p>
-				<p>{ this.props.recipe.instructions }</p>
+				<RecipeDisplay recipe={ this.props.recipe } />
 			</div>
 		)
 	}

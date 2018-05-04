@@ -3,6 +3,7 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as recipeActions from '../actions/recipeActions.js';
+import RecipeList from "./RecipeList.jsx";
 
 class Search extends React.Component {
 
@@ -26,7 +27,11 @@ class Search extends React.Component {
 
 	findRecipe(event) {
 		event.preventDefault();
-		this.props.actions.findRecipe(this.state.recipe);
+		this.props.actions.findRecipe(this.state.recipe.name);
+	}
+
+	componentWillUnmount() {
+		this.props.actions.resetRecipe();
 	}
 
 	render() {
@@ -48,13 +53,20 @@ class Search extends React.Component {
 						className='button'
 					>Search</div>
 				</form>
+				<br />
+				{ this.props.foundList &&
+					<RecipeList list={ this.props.foundList } />
+				}
 			</div>
 		)
 	}
 }
 
 function mapStateToProps(state, ownProps) {
-	return {};
+	console.log(state);
+	return {
+		foundList: state.recipes.found
+	};
 }
 
 function mapDispatchToProps(dispatch) {
