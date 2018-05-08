@@ -19,8 +19,7 @@ export default function recipeReducer(state = initialState, action) {
 			});
 
 		case types.FIND_RECIPE_SUCCESS:
-			var newList = Object.assign([], state.list, action.recipes);
-			console.log(newList);
+			var newList = action.recipes;
 			return Object.assign({}, state, {
 				found: newList
 			});

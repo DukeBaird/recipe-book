@@ -87,7 +87,7 @@ async function findRecipe(req, res, next) {
 			recipeFunctions.getRecipesByTags(searchText.split(" "))
 		]);
 
-		let results = [result[0], ...result[1], ...result[2]];
+		let results = [result[0], ...result[1], ...result[2]].filter((n) => n != undefined);
 		const unique_obj = {};
 
 		for (let i = 0; i < results.length; i++) {

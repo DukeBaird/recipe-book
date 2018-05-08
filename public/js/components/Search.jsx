@@ -63,7 +63,6 @@ class Search extends React.Component {
 }
 
 function mapStateToProps(state, ownProps) {
-	console.log(state);
 	return {
 		foundList: state.recipes.found
 	};
