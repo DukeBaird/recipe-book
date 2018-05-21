@@ -1,12 +1,14 @@
 import React, {PropTypes} from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
+import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 
 import Home from '../components/Home.jsx';
 import NotFound from '../components/404.jsx';
 import Search from '../components/Search.jsx';
 import Submit from '../components/Submit.jsx';
-import {connect} from 'react-redux';
-import {bindActionCreators} from 'redux';
+import Recipe from '../components/Recipe.jsx';
+
 
 
 
@@ -14,6 +16,7 @@ class Content extends React.Component {
 
 	constructor(props, context) {
 		super(props, context);
+		console.log(props);
 	}
 
 	render() {
@@ -23,7 +26,8 @@ class Content extends React.Component {
 					<Route exact path='/' render={(props) => ( <Home recipe={ this.props.recipe[0] } /> )}/>
 					<Route exact path='/search' render={(props) => ( <Search/> )}/>
 					<Route exact path='/Submit' render={(props) => ( <Submit/> )}/>
-					<Route exact path='/404' render={(props) => ( <NotFound /> )}/>
+					<Route path='/recipe/:recipeID' render={(props) => ( <Recipe/> )}/>
+					<Route exact path='/404' render={(props) => ( <NotFound/> )}/>
 				</Switch>
 			</div>
 		)

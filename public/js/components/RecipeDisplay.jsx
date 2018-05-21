@@ -9,7 +9,7 @@ class RecipeDisplay extends React.Component {
 
 	render() {
 		return (
-			<div>
+			<div className='recipeDisplay'>
 				<div>
 					<label>{ this.props.recipe.name }</label>
 				</div>

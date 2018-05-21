@@ -10,7 +10,7 @@ const RecipeList = ({list}) => {
 	}
 
 	return (
-		<div>
+		<div className='recipeList search'>
 			{list.map(recipe =>
 				<RecipeDisplay key={ recipe._id } recipe={ recipe } />
 			)}

@@ -8,7 +8,7 @@ class Home extends React.Component {
 		super(props, context);
 		this.state = {
 			hasRecipe: !!props.recipe
-		}
+		};
 	}
 
 	componentWillReceiveProps(nextProps) {
@@ -29,7 +29,9 @@ class Home extends React.Component {
 		return (
 			<div className='container'>
 				<div className='title'>Recipe Book</div>
-				<RecipeDisplay recipe={ this.props.recipe } />
+				<div className='recipeList'>	
+					<RecipeDisplay recipe={ this.props.recipe } />
+				</div>
 			</div>
 		)
 	}

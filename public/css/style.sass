@@ -1,13 +1,18 @@
+
+// colors
 $sideBar: lime
 $content: cyan
-$sideBarWidth: 300px
+$cardBorder: #CCC
+
+// sizes
+$standardWidth: 300px
 
 .sideBar 
 	position: fixed
 	top: 0
 	left: 0
 	bottom: 0
-	width: $sideBarWidth
+	width: $standardWidth
 	background-color: $sideBar
 
 .menuContainer
@@ -33,13 +38,21 @@ $sideBarWidth: 300px
 	display: flex
 	top: 0
 	height: 100vh
-	left: 300px
-	width: calc(100% - #{$sideBarWidth})
+	left: $standardWidth
+	width: calc(100% - #{$standardWidth})
 	background-color: $content
 
 .container
 	height: 100%
 	width: 100%
+
+	.recipeList 
+		display: flex
+		justify-content: center
+		width: 100%
+
+		&.search
+			justify-content: flex-start
 
 .title
 	height: 50px
@@ -47,3 +60,11 @@ $sideBarWidth: 300px
 	margin-top: 50px
 	font-size: 48px
 	text-align: center
+
+.recipeDisplay
+	margin: 5px
+	padding: 5px
+	height: $standardWidth
+	width: $standardWidth
+	background-color: white
+	border: solid 2px $cardBorder
