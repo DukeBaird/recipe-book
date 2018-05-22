@@ -5,13 +5,16 @@ import { connect } from 'react-redux';
 class Recipe extends React.Component {
 	constructor(props, context) {
 		super(props, context);
+		console.log('*');
+		console.log(props.match);
+		console.log('*');
 	}
 
 	render() {
 		return (
 			<div>
 				<div>Large explanation of recipe</div>
-				<div>{ this.props.recipeID }</div>
+				<div>{ this.props.match.params.recipeID }</div>
 			</div>
 		)
 	}

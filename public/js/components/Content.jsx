@@ -9,9 +9,6 @@ import Search from '../components/Search.jsx';
 import Submit from '../components/Submit.jsx';
 import Recipe from '../components/Recipe.jsx';
 
-
-
-
 class Content extends React.Component {
 
 	constructor(props, context) {
@@ -26,7 +23,7 @@ class Content extends React.Component {
 					<Route exact path='/' render={(props) => ( <Home recipe={ this.props.recipe[0] } /> )}/>
 					<Route exact path='/search' render={(props) => ( <Search/> )}/>
 					<Route exact path='/Submit' render={(props) => ( <Submit/> )}/>
-					<Route path='/recipe/:recipeID' render={(props) => ( <Recipe/> )}/>
+					<Route path='/recipe/:recipeID' component={Recipe}/>
 					<Route exact path='/404' render={(props) => ( <NotFound/> )}/>
 				</Switch>
 			</div>
@@ -44,4 +41,4 @@ function mapStateToProps(state, ownProps) {
 	}
 }
 
-export default withRouter(connect(mapStateToProps)(Content));
+export default connect(mapStateToProps)(Content);
