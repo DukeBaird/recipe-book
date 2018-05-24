@@ -11,6 +11,9 @@ class Recipe extends React.Component {
 	}
 
 	render() {
+
+		console.log(`The recipe ID is ${ this.match.params.recipeID }`);
+
 		return (
 			<div>
 				<div>Large explanation of recipe</div>
