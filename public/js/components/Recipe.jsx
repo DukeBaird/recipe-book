@@ -3,16 +3,22 @@ import ReactDOM from 'react-dom';
 import { connect } from 'react-redux';
 
 class Recipe extends React.Component {
-	constructor(props, context) {
-		super(props, context);
-		console.log('*');
-		console.log(props.match);
-		console.log('*');
+
+	constructor(props) {
+		super(props);
+	}
+
+	componentDidMount() {
+		// dispatch load recipe
+	}
+
+	componentWillUnmount() {
+		// dispatch remove recipe from state
 	}
 
 	render() {
 
-		console.log(`The recipe ID is ${ this.match.params.recipeID }`);
+		console.log(`The recipe ID is ${ this.props.match.params.recipeID }`);
 
 		return (
 			<div>
@@ -25,7 +31,7 @@ class Recipe extends React.Component {
 }
 
 function mapStateToProps(state, ownProps) {
-	console.log(ownProps);
+	// map full recipe to props
 	return {};
 }
 

@@ -12,7 +12,7 @@ const RecipeList = ({list}) => {
 	return (
 		<div className='recipeList search'>
 			{list.map(recipe =>
-				<RecipeDisplay key={ recipe._id } recipe={ recipe } />
+				<RecipeDisplay key={ recipe._id } { ...recipe } />
 			)}
 		</div>
 	)

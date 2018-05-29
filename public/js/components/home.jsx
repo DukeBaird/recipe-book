@@ -1,16 +1,17 @@
-import React    from 'react';
+import React, {PropTypes}    from 'react';
 import ReactDOM from 'react-dom';
 import RecipeDisplay from './RecipeDisplay.jsx';
 
 class Home extends React.Component {
 
-	constructor(props, context) {
-		super(props, context);
+	constructor(props) {
+		super(props);
 		this.state = {
-			hasRecipe: !!props.recipe
+			hasRecipe: !!props.recipe // DO we really need this !! in here, or can I just check props.recipe
 		};
 	}
 
+	// Im not sure this is really necessary anymore
 	componentWillReceiveProps(nextProps) {
 		if (this.props.recipe || nextProps.recipe) {
 			this.setState({ hasRecipe: true });
@@ -30,11 +31,15 @@ class Home extends React.Component {
 			<div className='container'>
 				<div className='title'>Recipe Book</div>
 				<div className='recipeList'>	
-					<RecipeDisplay recipe={ this.props.recipe } />
+					<RecipeDisplay { ...this.props.recipe } />
 				</div>
 			</div>
 		)
 	}
+}
+
+Home.propTyles = {
+	recipe: PropTypes.object
 }
 
 export default Home;

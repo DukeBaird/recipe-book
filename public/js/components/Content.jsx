@@ -9,27 +9,18 @@ import Search from '../components/Search.jsx';
 import Submit from '../components/Submit.jsx';
 import Recipe from '../components/Recipe.jsx';
 
-class Content extends React.Component {
+const Content = ({ recipe }) =>
 
-	constructor(props, context) {
-		super(props, context);
-		console.log(props);
-	}
+	<div className='contentArea'>
+		<Switch>
+			<Route exact path='/' render={(props) => ( <Home recipe={ recipe[0] } /> )}/>
+			<Route exact path='/search' render={(props) => ( <Search/> )}/>
+			<Route exact path='/Submit' render={(props) => ( <Submit/> )}/>
+			<Route path='/recipe/:recipeID' component={Recipe}/>
+			<Route exact path='/404' render={(props) => ( <NotFound/> )}/>
+		</Switch>
+	</div>
 
-	render() {
-		return (
-			<div className='contentArea'>
-				<Switch>
-					<Route exact path='/' render={(props) => ( <Home recipe={ this.props.recipe[0] } /> )}/>
-					<Route exact path='/search' render={(props) => ( <Search/> )}/>
-					<Route exact path='/Submit' render={(props) => ( <Submit/> )}/>
-					<Route path='/recipe/:recipeID' component={Recipe}/>
-					<Route exact path='/404' render={(props) => ( <NotFound/> )}/>
-				</Switch>
-			</div>
-		)
-	}
-}
 
 Content.propTypes = {
 	recipe: PropTypes.array
@@ -41,4 +32,4 @@ function mapStateToProps(state, ownProps) {
 	}
 }
 
-export default connect(mapStateToProps)(Content);
+export default withRouter(connect(mapStateToProps)(Content));

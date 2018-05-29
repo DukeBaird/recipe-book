@@ -1,30 +1,20 @@
 import React    from 'react';
 import ReactDOM from 'react-dom';
 
-class RecipeDisplay extends React.Component {
+const RecipeDisplay = ({ name, instructions, classification }) =>
+	<div className='recipeDisplay'>
+		<div>
+			<label>{ name }</label>
+		</div>
 
-	constructor(props) {
-		super(props);
-	}
+		<div>
+			<label>{ instructions }</label>
+		</div>
 
-	render() {
-		return (
-			<div className='recipeDisplay'>
-				<div>
-					<label>{ this.props.recipe.name }</label>
-				</div>
+		<div>
+			<label>{ classification }</label>
+		</div>
 
-				<div>
-					<label>{ this.props.recipe.instructions }</label>
-				</div>
-
-				<div>
-					<label>{ this.props.recipe.classification }</label>
-				</div>
-
-			</div>
-		)
-	}
-}
+	</div>
 
 export default RecipeDisplay
