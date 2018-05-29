@@ -30,7 +30,7 @@ export function resetRecipeSuccess() {
 
 export function loadRecipe() {
 	return function(dispatch) {
-		return recipeApi.getRecipe().then(recipe => {
+		return recipeApi.getRandomRecipe().then(recipe => {
 			dispatch(loadRecipeSuccess(recipe));
 		}).catch(error => {
 			throw (error);

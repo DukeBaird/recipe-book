@@ -1,5 +1,5 @@
 class RecipeApi {
-	static getRecipe() {
+	static getRandomRecipe() {
 		return fetch('/api/v1/randomRecipe').then(response => {
 			return response.json();
 		}).catch(error => {
