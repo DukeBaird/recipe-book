@@ -1,5 +1,6 @@
 import React from 'react';
 import RecipeDisplay from './RecipeDisplay.jsx';
+import { Link } from 'react-router-dom';
 
 const RecipeList = ({list}) => {
 
@@ -12,7 +13,11 @@ const RecipeList = ({list}) => {
 	return (
 		<div className='recipeList search'>
 			{list.map(recipe =>
-				<RecipeDisplay key={ recipe._id } { ...recipe } />
+
+				<Link key={ recipe._id } className='recipeCard' to={ '/recipe/' + recipe._id }>
+					<RecipeDisplay { ...recipe } />
+				</Link>
+
 			)}
 		</div>
 	)

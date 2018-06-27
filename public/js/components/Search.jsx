@@ -38,7 +38,7 @@ class Search extends React.Component {
 		return (
 			<div className='container'>
 				<div className='title'>Recipe Search</div>
-				<form>
+				<div>
 					<span>
 						<label htmlFor='nameInput'>Recipe Name</label>
 						<input 
@@ -52,7 +52,7 @@ class Search extends React.Component {
 						onClick={ this.findRecipe }
 						className='button'
 					>Search</div>
-				</form>
+				</div>
 				<br />
 				{ this.props.foundList &&
 					<RecipeList list={ this.props.foundList } />

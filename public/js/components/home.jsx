@@ -1,13 +1,14 @@
 import React, {PropTypes}    from 'react';
 import ReactDOM from 'react-dom';
 import RecipeDisplay from './RecipeDisplay.jsx';
+import { Link } from 'react-router-dom';
 
 class Home extends React.Component {
 
 	constructor(props) {
 		super(props);
 		this.state = {
-			hasRecipe: !!props.recipe // DO we really need this !! in here, or can I just check props.recipe
+			hasRecipe: !!props.recipe // Do we really need this !! in here, or can I just check props.recipe
 		};
 	}
 
@@ -30,8 +31,10 @@ class Home extends React.Component {
 		return (
 			<div className='container'>
 				<div className='title'>Recipe Book</div>
-				<div className='recipeList'>	
-					<RecipeDisplay { ...this.props.recipe } />
+				<div className='recipeList'>
+					<Link key={ this.props.recipe._id } className='recipeCard' to={ '/recipe/' + this.props.recipe._id }>
+						<RecipeDisplay { ...this.props.recipe } />
+					</Link>
 				</div>
 			</div>
 		)

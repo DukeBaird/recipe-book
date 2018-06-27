@@ -2,7 +2,7 @@ import React    from 'react';
 import ReactDOM from 'react-dom';
 
 const RecipeInput = ({ onChange, onSubmit }) =>
-	<form>
+	<div>
 		<span>
 			<label htmlFor='nameInput'>Recipe Name</label>
 			<input 
@@ -25,6 +25,6 @@ const RecipeInput = ({ onChange, onSubmit }) =>
 			onClick={ onSubmit }
 			className='button'
 		>Submit Recipe</div>
-	</form>
+	</div>
 
 export default RecipeInput
