@@ -27,7 +27,13 @@ export default function recipeReducer(state = initialState, action) {
 		case types.RESET_RECIPE_SUCCESS:
 			return Object.assign({}, state, {
 				created: false,
-				found: false
+				found: false,
+				full: null
+			});
+
+		case types.GET_RECIPE_SUCCESS:
+			return Object.assign({}, state, {
+				full: action.recipe
 			});
 
 		default:

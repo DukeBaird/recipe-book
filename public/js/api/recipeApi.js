@@ -28,6 +28,14 @@ class RecipeApi {
 			return error;
 		});
 	}
+
+	static getRecipe(recipeID) {
+		return fetch('/api/v1/recipe/' + recipeID).then(response => {
+			return response.json();
+		}).catch(error => {
+			return error;
+		});
+	}
 }
 
 export default RecipeApi;

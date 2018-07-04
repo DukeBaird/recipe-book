@@ -12,6 +12,7 @@ var recipe_ingredients = [{
 
 
 // Exports
+exports.test_recipe = test_recipe;
 exports.recipe_name = recipe_name;
 exports.recipe_classification = recipe_classification;
 

@@ -73,6 +73,21 @@ describe('Database Functions', function() {
 			});
 		});
 
+		it('Should return a recipe when given an ID, if it exists', function(done) {
+			recipeFunctions.getRecipe(testData.test_recipe).then(function(result) {
+				result.should.exist;
+				expect(result.name).to.equal(testData.recipeData.name);
+				done();
+			});
+		});
+
+		it('Should return null when given an ID, if it doesn\'t exist', function(done) {
+			recipeFunctions.getRecipe("garbage data").then(function(result) {
+				expect(result).to.not.exist;
+				done();
+			});
+		});
+
 		it('Should return a recipe by name if it exists', function(done) {
 			recipeFunctions.getRecipeByName(testData.recipe_name).then(function(result) {
 				result.should.exist;

@@ -20,6 +20,18 @@ exports.newRecipe = recipe => {
 	return rec.save();
 };
 
+
+/*
+ * getRecipe
+ * Finds a given recipe by the ID
+ * input: _id of a recipe
+ * output: Returns a promise object, resolving with the recipe, if exists
+ * and null if it does not
+ */
+exports.getRecipe = recipeID => {
+	return Recipe.findById(recipeID);
+}
+
 /*
  * getRecipeByName
  * Attempts to find a recipe by the given name
@@ -86,7 +98,6 @@ exports.deleteRecipe = id => {
  * input: Nothing
  * output: Returns a random recipe
 */
-
 // TODO: Unit test this
 exports.randomRecipe = () => {
 	return Recipe.aggregate({
