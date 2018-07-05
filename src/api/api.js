@@ -55,6 +55,7 @@ async function createRecipe(req, res, next) {
 	const recipe = {
 		name: req.body.name,
 		classification: req.body.classification,
+		description: req.body.description,
 		tags: req.body.tags,
 		instructions: req.body.instructions,
 		ingredients: req.body.ingredients

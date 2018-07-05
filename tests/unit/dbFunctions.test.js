@@ -56,6 +56,7 @@ describe('Database Functions', function() {
 			recipeFunctions.newRecipe({
 				name: 'food',
 				classification: 'also food',
+				description: 'food description',
 				tags: ['test'],
 				instructions: 'eat it',
 				ingredients: [{
@@ -116,6 +117,7 @@ describe('Database Functions', function() {
 				_id: '1111',
 				name: 'food',
 				classification: testData.recipe_classification,
+				description: 'this is a description',
 				tags: ['test'],
 				instructions: 'eat it',
 				ingredients: [{

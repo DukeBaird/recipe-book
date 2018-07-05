@@ -14,6 +14,7 @@ exports.newRecipe = recipe => {
 	rec._id = String(new Date().getTime()) + '-' + String(parseInt(100000 * Math.random()));
 	rec.name = recipe.name;
 	rec.classification = recipe.classification;
+	rec.description = recipe.description;
 	rec.tags = recipe.tags;
 	rec.instructions = recipe.instructions;
 	rec.ingredients = recipe.ingredients;
