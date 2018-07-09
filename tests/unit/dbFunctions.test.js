@@ -59,6 +59,7 @@ describe('Database Functions', function() {
 				description: 'food description',
 				tags: ['test'],
 				instructions: 'eat it',
+				time: 1,
 				ingredients: [{
 					name: 'edible',
 					amount: 1,

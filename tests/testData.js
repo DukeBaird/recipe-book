@@ -5,6 +5,7 @@ var recipe_description = 'this is a description';
 var recipe_classification = 'test_class';
 var recipe_tags = ['test', 'test2'];
 var recipe_instructions = 'this is a test';
+var recipe_time = 1;
 var recipe_ingredients = [{
 	name: 'test',
 	amount: 1,
@@ -23,6 +24,7 @@ exports.recipeData = {
 	name: recipe_name,
 	description: recipe_description,
 	classification: recipe_classification,
+	time: recipe_time,
 	tags: recipe_tags,
 	instructions: recipe_instructions,
 	ingredients: recipe_ingredients

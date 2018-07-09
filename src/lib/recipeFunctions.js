@@ -17,6 +17,7 @@ exports.newRecipe = recipe => {
 	rec.description = recipe.description;
 	rec.tags = recipe.tags;
 	rec.instructions = recipe.instructions;
+	rec.time = recipe.time;
 	rec.ingredients = recipe.ingredients;
 	return rec.save();
 };
