@@ -1,0 +1,13 @@
+image: node:7.2
+
+stages:
+  - build
+  - test
+
+.build:
+  script: npm install
+  stage: build
+
+.test:
+  script: npm test
+  stage: test
