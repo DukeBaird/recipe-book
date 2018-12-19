@@ -9,26 +9,31 @@ stages:
   script: 
     - npm install
   stage: prepare
+  artifacts:
+    paths:
+      - "$PROJECT/node_modules/"
+    expire_in: 1 week
+    when: always
 
 .test: &test
   # image: https://gitlab.com/bencraig/recipe-book.git
-  # dependencies:
-  #   - prepare
+  dependencies:
+    - prepare
   script: 
     - grunt
   stage: test
 
 .build: &build
-  # dependencies:
-  #   - test
+  dependencies:
+    - prepare
   script:
     - npm run-script build
     - npm run-script sass
   stage: build
 
 .pack: &pack
-  # dependencies:
-  #   - build
+  dependencies:
+    - build
   script:
     - npm run-script pack
   stage: pack
