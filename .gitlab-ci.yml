@@ -16,7 +16,7 @@ stages:
     when: always
 
 .test: &test
-  # image: https://gitlab.com/bencraig/recipe-book.git
+  image: registry.gitlab.com/bencraig/recipe-book:latest
   dependencies:
     - prepare
   script: 
@@ -24,27 +24,34 @@ stages:
   stage: test
 
 .build: &build
+  image: registry.gitlab.com/bencraig/recipe-book:latest
   dependencies:
     - prepare
   script:
     - npm run-script build
     - npm run-script sass
   stage: build
+  artifacts:
+    paths: 
+      - "$PROJECT/build/"
+    expire_in: 1 week
+    when: always
 
 .pack: &pack
+  image: registry.gitlab.com/bencraig/recipe-book:latest
   dependencies:
     - build
   script:
     - npm run-script pack
   stage: pack
 
-prepare:
+prepare: recipe-book
   <<: *prepare
 
 test:
   <<: *test
 
-build:
+build: recipe-book
   <<: *build
 
 pack:
