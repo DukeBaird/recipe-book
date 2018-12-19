@@ -18,7 +18,7 @@ stages:
 .test: &test
   image: registry.gitlab.com/bencraig/recipe-book:latest
   dependencies:
-    - prepare
+    - prepare:recipe-book
   script: 
     - grunt
   stage: test
@@ -26,7 +26,7 @@ stages:
 .build: &build
   image: registry.gitlab.com/bencraig/recipe-book:latest
   dependencies:
-    - prepare
+    - prepare:recipe-book
   script:
     - npm run-script build
     - npm run-script sass
@@ -40,18 +40,18 @@ stages:
 .pack: &pack
   image: registry.gitlab.com/bencraig/recipe-book:latest
   dependencies:
-    - build
+    - build:recipe-book
   script:
     - npm run-script pack
   stage: pack
 
-prepare: recipe-book
+prepare:recipe-book:
   <<: *prepare
 
 test:
   <<: *test
 
-build: recipe-book
+build:recipe-book:
   <<: *build
 
 pack:
