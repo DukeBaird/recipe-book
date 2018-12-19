@@ -1,13 +1,33 @@
-image: node:7.2
-
 stages:
-  - build
+  - prepare
   - test
+  - build
+  - pack
 
-.build:
-  script: npm install
+prepare:
+  image: node:7.2
+  script: 
+    - npm install
   stage: build
 
-.test:
-  script: npm test
+test:
+  # image: https://gitlab.com/bencraig/recipe-book.git
+  dependencies:
+    - prepare
+  script: 
+    - grunt
   stage: test
+
+
+build:
+  dependencies:
+    - test
+  script:
+    - npm run-script build
+    - npm run-script sass
+
+pack:
+  dependencies:
+    - build
+  script:
+    - npm run-script pack
