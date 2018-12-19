@@ -8,7 +8,7 @@ stages:
   image: node:7.2
   script: 
     - npm install
-  stage: build
+  stage: prepare
 
 .test: &test
   # image: https://gitlab.com/bencraig/recipe-book.git
@@ -24,12 +24,14 @@ stages:
   script:
     - npm run-script build
     - npm run-script sass
+  stage: build
 
 .pack: &pack
   # dependencies:
   #   - build
   script:
     - npm run-script pack
+  stage: pack
 
 prepare:
   <<: *prepare
