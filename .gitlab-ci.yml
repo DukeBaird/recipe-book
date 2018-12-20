@@ -20,7 +20,7 @@ stages:
   dependencies:
     - prepare:recipe-book
   script: 
-    - grunt
+    - npm run-script test
   stage: test
 
 .build: &build
