@@ -11,7 +11,6 @@ module.exports = function(grunt) {
 						junit_report_path: "tests/unitTestResults.xml",
 						junit_report_stack: 1
 					},
-					reqire: 'babel-register',
 					quiet: false,
 					clearRequireCache: true
 				},
