@@ -1,5 +1,6 @@
 stages:
   - prepare
+  - transpile
   - test
   - build
   - pack
@@ -15,10 +16,22 @@ stages:
     expire_in: 1 week
     when: always
 
-.test: &test
+transpile:
   image: node:10.14
   dependencies:
     - prepare:recipe-book
+  script:
+    - npm run build
+  artifacts:
+    paths: 
+      - "$PROJECT/build/"
+    expire_in: 1 week
+    when: always
+
+.test: &test
+  image: node:10.14
+  dependencies:
+    - transpile
   script: 
     - npm run-script test
   stage: test
@@ -28,12 +41,11 @@ stages:
   dependencies:
     - prepare:recipe-book
   script:
-    - npm run-script build
     - npm run-script sass
   stage: build
   artifacts:
     paths: 
-      - "$PROJECT/build/"
+      - "$PROJECT/public/css"
     expire_in: 1 week
     when: always
 

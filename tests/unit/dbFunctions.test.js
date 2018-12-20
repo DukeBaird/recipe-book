@@ -1,8 +1,8 @@
-var recipeFunctions = require('../../src/lib/recipeFunctions.js');
+var recipeFunctions = require('../../build/lib/recipeFunctions.js');
 
-require('../../src/models/recipe.js');
+require('../../build/models/recipe.js');
 
-import chai from 'chai';
+var chai = require('chai');
 var sinon = require('sinon');
 var mongoose = require('mongoose');
 mongoose.Promise = require('bluebird');

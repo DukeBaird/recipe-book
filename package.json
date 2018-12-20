@@ -16,7 +16,7 @@
     "build": "babel src -d build",
     "start": "node build/main.js",
     "sass": "sass ./public/css/style.sass ./public/css/style.css",
-    "unit-tests": "mocha --ui tdd --compilers js:babel-core/register tests/**/*.js",
+    "unit-tests": "grunt",
     "pack": "webpack --config webpack.config.js"
   },
   "dependencies": {
