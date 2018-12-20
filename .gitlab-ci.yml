@@ -55,10 +55,10 @@ transpile:
 test:
   <<: *test
 
-build:recipe-book:
-  <<: *build
-  variables:
-    PROJECT: .
+# build:recipe-book:
+#   <<: *build
+#   variables:
+#     PROJECT: .
 
 pack:
   <<: *pack
