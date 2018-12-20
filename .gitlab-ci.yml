@@ -20,6 +20,7 @@ transpile:
   image: node:10.14
   dependencies:
     - prepare:recipe-book
+  stage: transpile
   script:
     - npm run build
   artifacts:
