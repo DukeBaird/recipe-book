@@ -13,7 +13,7 @@ module.exports = function(grunt) {
 					},
 					reqire: 'babel-register',
 					quiet: false,
-					clearRequireCache: true,
+					clearRequireCache: true
 				},
 				src: [
 					'tests/unit/*.js'
