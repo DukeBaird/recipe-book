@@ -5,7 +5,7 @@ stages:
   - pack
 
 .prepare: &prepare
-  image: node:7.2
+  image: node:10.14
   script: 
     - npm install
   stage: prepare
@@ -16,7 +16,7 @@ stages:
     when: always
 
 .test: &test
-  image: node:7.2
+  image: node:10.14
   dependencies:
     - prepare:recipe-book
   script: 
@@ -24,7 +24,7 @@ stages:
   stage: test
 
 .build: &build
-  image: node:7.2
+  image: node:10.14
   dependencies:
     - prepare:recipe-book
   script:
@@ -38,7 +38,7 @@ stages:
     when: always
 
 .pack: &pack
-  image: node:7.2
+  image: node:10.14
   dependencies:
     - build:recipe-book
   script:
