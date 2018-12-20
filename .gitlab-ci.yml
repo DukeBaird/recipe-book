@@ -16,7 +16,7 @@ stages:
     when: always
 
 .test: &test
-  image: registry.gitlab.com/bencraig/recipe-book:latest
+  image: node:7.2
   dependencies:
     - prepare:recipe-book
   script: 
@@ -24,7 +24,7 @@ stages:
   stage: test
 
 .build: &build
-  image: registry.gitlab.com/bencraig/recipe-book:latest
+  image: node:7.2
   dependencies:
     - prepare:recipe-book
   script:
@@ -38,7 +38,7 @@ stages:
     when: always
 
 .pack: &pack
-  image: registry.gitlab.com/bencraig/recipe-book:latest
+  image: node:7.2
   dependencies:
     - build:recipe-book
   script:
@@ -47,12 +47,16 @@ stages:
 
 prepare:recipe-book:
   <<: *prepare
+  variables:
+    PROJECT: .
 
 test:
   <<: *test
 
 build:recipe-book:
   <<: *build
+  variables:
+    PROJECT: .
 
 pack:
   <<: *pack
