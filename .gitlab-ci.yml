@@ -2,7 +2,6 @@ stages:
   - prepare
   - transpile
   - test
-  - build
   - pack
 
 .prepare: &prepare
@@ -36,20 +35,10 @@ stages:
     - npm run-script unit-tests
   stage: test
 
-.build: &build
-  image: registry.gitlab.com/alertlabs/devops/webapp-build:latest
-  script:
-    - npm run-script sass
-  stage: build
-  artifacts:
-    paths: 
-      - "$PROJECT/public/css"
-    expire_in: 1 week
-    when: always
-
 .pack: &pack
   image: node:10.14
   script:
+    - pwd
     - npm run-script pack
   stage: pack
 
