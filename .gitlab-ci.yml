@@ -23,7 +23,7 @@ stages:
   stage: transpile
   script:
     - npm run build
-  artifacts:n
+  artifacts:
     paths: 
       - "$PROJECT/build/"
     expire_in: 1 week
