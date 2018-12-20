@@ -1,6 +1,6 @@
-var recipeFunctions = require('../../build/lib/recipeFunctions.js');
+var recipeFunctions = require('../../src/lib/recipeFunctions.js');
 
-require('../../build/models/recipe.js');
+require('../../src/models/recipe.js');
 
 var chai = require('chai');
 var sinon = require('sinon');
