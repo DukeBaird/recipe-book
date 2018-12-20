@@ -23,7 +23,7 @@ stages:
   stage: transpile
   script:
     - npm run build
-  artifacts:
+  artifacts:n
     paths: 
       - "$PROJECT/build/"
     expire_in: 1 week
@@ -31,16 +31,16 @@ stages:
 
 .test: &test
   image: registry.gitlab.com/alertlabs/devops/webapp-build:latest
-  dependencies:
-    - transpile
+  # dependencies:
+  #   - transpile
   script: 
     - npm run-script unit-tests
   stage: test
 
 .build: &build
   image: registry.gitlab.com/alertlabs/devops/webapp-build:latest
-  dependencies:
-    - prepare:recipe-book
+  # dependencies:
+  #   - prepare:recipe-book
   script:
     - npm run-script sass
   stage: build
@@ -52,8 +52,8 @@ stages:
 
 .pack: &pack
   image: node:10.14
-  dependencies:
-    - build:recipe-book
+  # dependencies:
+  #   - build:recipe-book
   script:
     - npm run-script pack
   stage: pack
