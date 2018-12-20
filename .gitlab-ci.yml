@@ -31,16 +31,13 @@ stages:
 
 .test: &test
   image: registry.gitlab.com/alertlabs/devops/webapp-build:latest
-  # dependencies:
-  #   - transpile
+  allow_failure: true
   script: 
     - npm run-script unit-tests
   stage: test
 
 .build: &build
   image: registry.gitlab.com/alertlabs/devops/webapp-build:latest
-  # dependencies:
-  #   - prepare:recipe-book
   script:
     - npm run-script sass
   stage: build
@@ -52,8 +49,6 @@ stages:
 
 .pack: &pack
   image: node:10.14
-  # dependencies:
-  #   - build:recipe-book
   script:
     - npm run-script pack
   stage: pack

@@ -16,7 +16,7 @@
     "build": "babel src -d build",
     "start": "node build/main.js",
     "sass": "sass ./public/css/style.sass ./public/css/style.css",
-    "unit-tests": "grunt",
+    "unit-tests": "grunt --force",
     "pack": "webpack --config webpack.config.js"
   },
   "dependencies": {
