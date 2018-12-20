@@ -30,7 +30,7 @@ stages:
     when: always
 
 .test: &test
-  image: node:10.14
+  image: registry.gitlab.com/alertlabs/devops/webapp-build:latest
   dependencies:
     - transpile
   script: 
@@ -38,7 +38,7 @@ stages:
   stage: test
 
 .build: &build
-  image: node:10.14
+  image: registry.gitlab.com/alertlabs/devops/webapp-build:latest
   dependencies:
     - prepare:recipe-book
   script:
