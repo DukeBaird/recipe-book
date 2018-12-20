@@ -16,7 +16,7 @@ stages:
     expire_in: 1 week
     when: always
 
-transpile:
+.transpile: &transpile
   image: node:10.14
   dependencies:
     - prepare:recipe-book
@@ -34,7 +34,7 @@ transpile:
   dependencies:
     - transpile
   script: 
-    - npm run-script test
+    - npm run-script unit-tests
   stage: test
 
 .build: &build
@@ -60,6 +60,11 @@ transpile:
 
 prepare:recipe-book:
   <<: *prepare
+  variables:
+    PROJECT: .
+
+transpile:
+  <<: *transpile
   variables:
     PROJECT: .
 
